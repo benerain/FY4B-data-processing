@@ -1,0 +1,1463 @@
+{
+    "metadata": {
+        ".zattrs": {
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_type": "agri_l1_4000m",
+            "modifiers": [],
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "start_time": "2025-02-26 07:00:02.347000"
+        },
+        ".zgroup": {
+            "zarr_format": 2
+        },
+        "C01/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C01/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "reflectance",
+                "modifiers": [],
+                "name": "C01",
+                "resolution": 4000,
+                "wavelength": [
+                    0.45,
+                    0.47,
+                    0.49,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band1(band number is range from 1 to 20)",
+            "calibration": "reflectance",
+            "center_wavelength": "0.47um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel01",
+            "file_type": "agri_l1_4000m",
+            "long_name": "0.47um channel 4km image data layer",
+            "lut_key": "CALChannel01",
+            "modifiers": [],
+            "name": "C01",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_bidirectional_reflectance",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "%",
+            "valid_range": [
+                -2.1536437794566154,
+                114.30999645963311
+            ],
+            "wavelength": [
+                0.45,
+                0.47,
+                0.49,
+                "\u00b5m"
+            ]
+        },
+        "C02/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C02/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "reflectance",
+                "modifiers": [],
+                "name": "C02",
+                "resolution": 4000,
+                "wavelength": [
+                    0.55,
+                    0.65,
+                    0.75,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band2(band number is range from 1 to 20)",
+            "calibration": "reflectance",
+            "center_wavelength": "0.65um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel02",
+            "file_type": "agri_l1_4000m",
+            "long_name": "0.65um channel 4km image data layer",
+            "lut_key": "CALChannel02",
+            "modifiers": [],
+            "name": "C02",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_bidirectional_reflectance",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "%",
+            "valid_range": [
+                -2.1536437794566154,
+                114.30999645963311
+            ],
+            "wavelength": [
+                0.55,
+                0.65,
+                0.75,
+                "\u00b5m"
+            ]
+        },
+        "C03/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C03/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "reflectance",
+                "modifiers": [],
+                "name": "C03",
+                "resolution": 4000,
+                "wavelength": [
+                    0.75,
+                    0.83,
+                    0.9,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band3(band number is range from 1 to 20)",
+            "calibration": "reflectance",
+            "center_wavelength": "0.825um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel03",
+            "file_type": "agri_l1_4000m",
+            "long_name": "0.825um channel 4km image data layer",
+            "lut_key": "CALChannel03",
+            "modifiers": [],
+            "name": "C03",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_bidirectional_reflectance",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "%",
+            "valid_range": [
+                -2.1536437794566154,
+                114.30999645963311
+            ],
+            "wavelength": [
+                0.75,
+                0.83,
+                0.9,
+                "\u00b5m"
+            ]
+        },
+        "C04/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C04/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "reflectance",
+                "modifiers": [],
+                "name": "C04",
+                "resolution": 4000,
+                "wavelength": [
+                    1.36,
+                    1.37,
+                    1.39,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band4(band number is range from 1 to 20)",
+            "calibration": "reflectance",
+            "center_wavelength": "1.379um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel04",
+            "file_type": "agri_l1_4000m",
+            "long_name": "1.379um channel 4km image data layer",
+            "lut_key": "CALChannel04",
+            "modifiers": [],
+            "name": "C04",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_bidirectional_reflectance",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "%",
+            "valid_range": [
+                -2.1536437794566154,
+                114.30999645963311
+            ],
+            "wavelength": [
+                1.36,
+                1.37,
+                1.39,
+                "\u00b5m"
+            ]
+        },
+        "C05/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C05/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "reflectance",
+                "modifiers": [],
+                "name": "C05",
+                "resolution": 4000,
+                "wavelength": [
+                    1.58,
+                    1.61,
+                    1.64,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band5(band number is range from 1 to 20)",
+            "calibration": "reflectance",
+            "center_wavelength": "1.61um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel05",
+            "file_type": "agri_l1_4000m",
+            "long_name": "1.61um channel 4km image data layer",
+            "lut_key": "CALChannel05",
+            "modifiers": [],
+            "name": "C05",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_bidirectional_reflectance",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "%",
+            "valid_range": [
+                -2.1536437794566154,
+                114.30999645963311
+            ],
+            "wavelength": [
+                1.58,
+                1.61,
+                1.64,
+                "\u00b5m"
+            ]
+        },
+        "C06/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C06/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "reflectance",
+                "modifiers": [],
+                "name": "C06",
+                "resolution": 4000,
+                "wavelength": [
+                    2.1,
+                    2.22,
+                    2.35,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band6(band number is range from 1 to 20)",
+            "calibration": "reflectance",
+            "center_wavelength": "2.225um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel06",
+            "file_type": "agri_l1_4000m",
+            "long_name": "2.225um channel 4km image data layer",
+            "lut_key": "CALChannel06",
+            "modifiers": [],
+            "name": "C06",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_bidirectional_reflectance",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "%",
+            "valid_range": [
+                -2.1536437794566154,
+                114.30999645963311
+            ],
+            "wavelength": [
+                2.1,
+                2.22,
+                2.35,
+                "\u00b5m"
+            ]
+        },
+        "C07/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C07/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C07",
+                "resolution": 4000,
+                "wavelength": [
+                    3.5,
+                    3.72,
+                    4.0,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band7(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "3.75um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel07",
+            "file_type": "agri_l1_4000m",
+            "long_name": "3.75um channel 4km image data layer(high)",
+            "lut_key": "CALChannel07",
+            "modifiers": [],
+            "name": "C07",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                3.5,
+                3.72,
+                4.0,
+                "\u00b5m"
+            ]
+        },
+        "C08/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C08/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C08",
+                "resolution": 4000,
+                "wavelength": [
+                    3.5,
+                    3.72,
+                    4.0,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band8(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "3.75um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel08",
+            "file_type": "agri_l1_4000m",
+            "long_name": "3.75um channel 4km image data layer(low)",
+            "lut_key": "CALChannel08",
+            "modifiers": [],
+            "name": "C08",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                3.5,
+                3.72,
+                4.0,
+                "\u00b5m"
+            ]
+        },
+        "C09/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C09/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C09",
+                "resolution": 4000,
+                "wavelength": [
+                    5.69,
+                    6.25,
+                    6.81,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band9(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "6.25um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel09",
+            "file_type": "agri_l1_4000m",
+            "long_name": "6.25um channel 4km image data layer",
+            "lut_key": "CALChannel09",
+            "modifiers": [],
+            "name": "C09",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                5.69,
+                6.25,
+                6.81,
+                "\u00b5m"
+            ]
+        },
+        "C10/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C10/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C10",
+                "resolution": 4000,
+                "wavelength": [
+                    6.67,
+                    6.95,
+                    7.21,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band10(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "6.95um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel10",
+            "file_type": "agri_l1_4000m",
+            "long_name": "6.95um channel 4km image data layer",
+            "lut_key": "CALChannel10",
+            "modifiers": [],
+            "name": "C10",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                6.67,
+                6.95,
+                7.21,
+                "\u00b5m"
+            ]
+        },
+        "C11/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C11/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C11",
+                "resolution": 4000,
+                "wavelength": [
+                    7.19,
+                    7.42,
+                    7.7,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band11(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "7.42um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel11",
+            "file_type": "agri_l1_4000m",
+            "long_name": "7.42um channel 4km image data layer",
+            "lut_key": "CALChannel11",
+            "modifiers": [],
+            "name": "C11",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                7.19,
+                7.42,
+                7.7,
+                "\u00b5m"
+            ]
+        },
+        "C12/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C12/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C12",
+                "resolution": 4000,
+                "wavelength": [
+                    8.0,
+                    8.5,
+                    9.0,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band12(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "8.55um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel12",
+            "file_type": "agri_l1_4000m",
+            "long_name": "8.55um channel 4km image data layer",
+            "lut_key": "CALChannel12",
+            "modifiers": [],
+            "name": "C12",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                8.0,
+                8.5,
+                9.0,
+                "\u00b5m"
+            ]
+        },
+        "C13/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C13/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C13",
+                "resolution": 4000,
+                "wavelength": [
+                    10.3,
+                    10.8,
+                    11.1,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band13(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "10.8um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel13",
+            "file_type": "agri_l1_4000m",
+            "long_name": "10.8um channel 4km image data layer",
+            "lut_key": "CALChannel13",
+            "modifiers": [],
+            "name": "C13",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                10.3,
+                10.8,
+                11.1,
+                "\u00b5m"
+            ]
+        },
+        "C14/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C14/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C14",
+                "resolution": 4000,
+                "wavelength": [
+                    11.5,
+                    12.0,
+                    12.5,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band14(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "12.0um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel14",
+            "file_type": "agri_l1_4000m",
+            "long_name": "12.0um channel 4km image data layer",
+            "lut_key": "CALChannel14",
+            "modifiers": [],
+            "name": "C14",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                11.5,
+                12.0,
+                12.5,
+                "\u00b5m"
+            ]
+        },
+        "C15/.zarray": {
+            "chunks": [
+                1,
+                500,
+                500
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 3,
+                "cname": "zstd",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                2748,
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "C15/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "y",
+                "x"
+            ],
+            "_satpy_id": {
+                "calibration": "brightness_temperature",
+                "modifiers": [],
+                "name": "C15",
+                "resolution": 4000,
+                "wavelength": [
+                    13.2,
+                    13.5,
+                    13.8,
+                    "\u00b5m"
+                ]
+            },
+            "ancillary_variables": [],
+            "area": {
+                "area_extent": [
+                    -5496021.21027401,
+                    -5496021.21027401,
+                    5496021.21027401,
+                    5496021.21027401
+                ],
+                "area_id": "DISK_4000m",
+                "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+                "height": 2748,
+                "width": 2748
+            },
+            "band_names": "band15(band number is range from 1 to 20)",
+            "calibration": "brightness_temperature",
+            "center_wavelength": "13.3um",
+            "coordinates": "crs",
+            "end_time": "2025-02-26 07:12:54.302000",
+            "file_key": "NOMChannel15",
+            "file_type": "agri_l1_4000m",
+            "long_name": "13.3um channel 4km image data layer",
+            "lut_key": "CALChannel15",
+            "modifiers": [],
+            "name": "C15",
+            "orbital_parameters": {
+                "satellite_nominal_altitude": 35786000.0,
+                "satellite_nominal_latitude": 0.0,
+                "satellite_nominal_longitude": 105.0
+            },
+            "platform_name": "FY-4B",
+            "reader": "agri_fy4b_l1",
+            "resolution": 4000,
+            "sensor": "agri",
+            "standard_name": "toa_brightness_temperature",
+            "start_time": "2025-02-26 07:00:02.347000",
+            "units": "K",
+            "valid_range": [
+                100.0,
+                500.0
+            ],
+            "wavelength": [
+                13.2,
+                13.5,
+                13.8,
+                "\u00b5m"
+            ]
+        },
+        "crs/.zarray": {
+            "chunks": [],
+            "compressor": null,
+            "dtype": "<U742",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [],
+            "zarr_format": 2
+        },
+        "crs/.zattrs": {
+            "_ARRAY_DIMENSIONS": []
+        },
+        "time/.zarray": {
+            "chunks": [
+                1
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1
+            ],
+            "zarr_format": 2
+        },
+        "time/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time"
+            ],
+            "calendar": "proleptic_gregorian",
+            "units": "days since 2025-02-26 07:00:02"
+        },
+        "x/.zarray": {
+            "chunks": [
+                2748
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "x/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "x"
+            ],
+            "units": "meter"
+        },
+        "y/.zarray": {
+            "chunks": [
+                2748
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2748
+            ],
+            "zarr_format": 2
+        },
+        "y/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "y"
+            ],
+            "units": "meter"
+        }
+    },
+    "zarr_consolidated_format": 1
+}

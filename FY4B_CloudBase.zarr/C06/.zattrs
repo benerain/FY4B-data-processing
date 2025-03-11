@@ -1,0 +1,65 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "time",
+        "y",
+        "x"
+    ],
+    "_satpy_id": {
+        "calibration": "reflectance",
+        "modifiers": [],
+        "name": "C06",
+        "resolution": 4000,
+        "wavelength": [
+            2.1,
+            2.22,
+            2.35,
+            "\u00b5m"
+        ]
+    },
+    "ancillary_variables": [],
+    "area": {
+        "area_extent": [
+            -5496021.21027401,
+            -5496021.21027401,
+            5496021.21027401,
+            5496021.21027401
+        ],
+        "area_id": "DISK_4000m",
+        "crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6378137,298.252840776245,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Geostationary Satellite (Sweep Y)\"],PARAMETER[\"Longitude of natural origin\",105,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"Satellite Height\",35786000,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+        "height": 2748,
+        "width": 2748
+    },
+    "band_names": "band6(band number is range from 1 to 20)",
+    "calibration": "reflectance",
+    "center_wavelength": "2.225um",
+    "coordinates": "crs",
+    "end_time": "2025-02-26 07:12:54.302000",
+    "file_key": "NOMChannel06",
+    "file_type": "agri_l1_4000m",
+    "long_name": "2.225um channel 4km image data layer",
+    "lut_key": "CALChannel06",
+    "modifiers": [],
+    "name": "C06",
+    "orbital_parameters": {
+        "satellite_nominal_altitude": 35786000.0,
+        "satellite_nominal_latitude": 0.0,
+        "satellite_nominal_longitude": 105.0
+    },
+    "platform_name": "FY-4B",
+    "reader": "agri_fy4b_l1",
+    "resolution": 4000,
+    "sensor": "agri",
+    "standard_name": "toa_bidirectional_reflectance",
+    "start_time": "2025-02-26 07:00:02.347000",
+    "units": "%",
+    "valid_range": [
+        -2.1536437794566154,
+        114.30999645963311
+    ],
+    "wavelength": [
+        2.1,
+        2.22,
+        2.35,
+        "\u00b5m"
+    ]
+}

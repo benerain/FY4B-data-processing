@@ -261,5 +261,6 @@ class FY4Base(HDF5FileHandler):
                        area_extent[3])
 
         area = get_area_definition(pdict, area_extent)
+        print(f"🟢 生成 area definition: {area}")
 
         return area

@@ -13,3 +13,18 @@ china_4km:
   area_extent:
     lower_left_xy: [-3256286.769420, -1516788.718383]
     upper_right_xy: [3256286.769420, 2351366.332281]
+
+
+china_4km_eqc:
+  description: china_4km_eqc
+  projection:
+    proj: eqc
+    ellps: WGS84
+    lat_0: 36.0
+    lon_0: 104.0
+  shape:
+    height: 1002
+    width: 1725
+  area_extent:
+    lower_left_xy: [-3450904.214591, -2003750.834279]
+    upper_right_xy: [3450904.214591, 2003750.834279]

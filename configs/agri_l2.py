@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 RESOLUTION_LIST = [250, 500, 1000, 2000, 4000]
 
 
-
 from satpy.readers.netcdf_utils import NetCDF4FileHandler  # 改为继承 NetCDF 处理器
 from satpy.readers.fy4_base import FY4Base  # 假设 FY4Base 在 fy4_base.py 中
 from satpy.readers._geos_area import get_area_extent, get_area_definition
@@ -134,7 +133,7 @@ class AGRI_L2_NC_Handler( NetCDF4FileHandler):
         area_extent = get_area_extent(pdict)
         # 生成 area definition
         area = get_area_definition(pdict, area_extent)
-        print(f"🟢 生成 area definition: {area}")
+        # print(f"🟢 生成 area definition: {area}")
 
         return area
 

@@ -1,5 +1,6 @@
 ### +proj=laea +lat_0=36.0 +lon_0=104.0 +ellps=WGS84
-
+# [5, 55, 70, 140] 重新生成
+# python coord2area_def.py china_4km_eqc eqc 5, 55, 70, 140
 china_4km:
   description: china_4km
   projection:

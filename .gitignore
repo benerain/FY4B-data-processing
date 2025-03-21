@@ -1,4 +1,5 @@
 /data/
 __pycache__/
 requirements.txt
-
+.DS_Store
+utils/.DS_Store

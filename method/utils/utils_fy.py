@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 from matplotlib.colors import ListedColormap 
 
-
+from method.utils.pytorch_class_fy import FY4BTilesDataset
 # # 设置matplotlib的全局字体配置
 # plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'SimHei', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'DejaVu Sans']
 # plt.rcParams['axes.unicode_minus'] = False
@@ -21,7 +21,7 @@ from matplotlib.colors import ListedColormap
 
 # import torch
 # import torch.nn as nn
-# from torch.utils.data import Dataset
+from torch.utils.data import Dataset
 # from torch.utils.data import DataLoader
 
 
@@ -169,6 +169,7 @@ def get_channels_cloud_mask(filename):
         channels, filling_in = fill_in_values(channels, fill_in=True)
 
         raw_clm = read_channel(level_data, 'CLM')
+        # print(raw_clm)
         cloud_mask = xr.where(raw_clm == 0, 1, 0).astype(np.uint8)
         
 
@@ -539,9 +540,10 @@ def plot_tile(tile):
         if 'time' in mask_data.dims and len(mask_data.time) > 0:
             mask_data = mask_data.isel(time=0)
         
-        # 定义自定义颜色映射 - 蓝色表示晴空，灰色表示云
-        # colors = ['#646464', '#191966']  
-        colors = ['#646464', '#191966']
+        # 将mask_data转换为0和1的二值图像
+        # 0表示晴空（深蓝色 ('#191966')），1表示云（灰色 ('#646464')）.
+        colors = [ '#191966','#646464']
+
 
         cmap_custom = ListedColormap(colors)
 
@@ -579,57 +581,185 @@ def plot_tile(tile):
     if isinstance(tile, xr.Dataset):
         tile.close()
 
-def load_means_stds(file, log_transform, subset=[1, 3, 4]):
-	"""
-	Load means and standard deviations of the different cloud properties.
-	:param file: File in which the quantities are stored.
-	:param log_transform: Boolean to indicate if some cloud properties are to be log-transformed (only COT or CWP).
-	:param subset: Subset of cloud properties to load. Channels are stored in order: CTP, CTH, CTT, COT, CWP.
-	:returns: numpy.arrays of means and standard deviations.
-	"""
-	df_means_stds = pd.read_csv(
-		file, header=0, skiprows=2, sep=' ', usecols=[0, 1, 2, 3, 4, 5])
-	Means = df_means_stds.iloc[0].values
-	Stds = df_means_stds.iloc[1].values
-	Mins = df_means_stds.iloc[2].values
-	Maxs = df_means_stds.iloc[3].values
-	Means_log = df_means_stds.iloc[4].values
-	Stds_log = df_means_stds.iloc[5].values
-	if log_transform:
-		# Replace mean/std by the mean/std of logs for COT and CWP
-		Means[3:5] = Means_log[3:5]
-		Stds[3:5] = Stds_log[3:5]
-	# Select subset channels
-	means = Means[subset]
-	stds = Stds[subset]
-	mins = Mins[subset]
-	maxs = Maxs[subset]
-	return means, stds, mins, maxs
+# endregion
 
-def load_data_tiles(ddir, tile_names):
-    """
-    加载 FY4B 卫星数据瓦片。
+# region 计算通道统计量
 
-    :param ddir: 瓦片文件所在的数据目录
-    :param tile_names: 瓦片文件名的正则表达式模式
-    :returns: 数据集对象和对应的 DataLoader
+
+# TODO: 计算全部文件的通道统计量，当前只有一个文件
+def calculate_channel_stats(data_dir: str, output_file: str, log_channels=None) -> None:
     """
-    try:
-        # 导入必要的库
-        from torch.utils.data import Dataset, DataLoader
-        import torch
-        import glob
-        import os
+    遍历 data_dir 目录下所有 .nc 文件，计算每个文件中 FY4B 卫星通道 (C01~C15) 的统计量：
+      - 均值 (mean)
+      - 标准差 (std)
+      - 最小值 (min)
+      - 最大值 (max)
+      - 对数均值 (log_mean) 与对数标准差 (log_std)：仅对 log_channels 指定的通道（如 ["C01", "C02", "C04"]）进行，
+        仅对数据大于 0 的像元计算；其他通道输出 nan。
+
+  
+ 
+    """
+    if log_channels is None:
+        log_channels = []
+    log_channels_set = set(log_channels)
+    
+    # 获取 data_dir 下所有 .nc 文件
+    file_paths = glob.glob(os.path.join(data_dir, "*.nc"))
+    if not file_paths:
+        print(f"在目录 {data_dir} 下未找到 .nc 文件。")
+        return
+
+    # 如果 output_file 不是绝对路径，则构造完整路径
+    if not os.path.isabs(output_file):
+        output_path = os.path.join(data_dir, output_file)
+    else:
+        output_path = output_file
+
+    # 打开输出文件（覆盖方式）
+    with open(output_path, "w", encoding="utf-8") as out_f:
+        # 遍历所有文件
+        for file_path in file_paths:
+            try:
+                with xr.open_dataset(file_path) as ds:
+                    # 定义通道顺序：C01～C15
+                    channels_order = [f"C{i:02d}" for i in range(1, 16)]
+                    
+                    # 初始化统计列表
+                    means, stds, mins_, maxs_ = [], [], [], []
+                    log_means, log_stds = [], []
+                    
+                    for chan in channels_order:
+                        if chan not in ds:
+                            # 若当前通道不存在，则输出 nan
+                            means.append(np.nan)
+                            stds.append(np.nan)
+                            mins_.append(np.nan)
+                            maxs_.append(np.nan)
+                            log_means.append(np.nan)
+                            log_stds.append(np.nan)
+                            continue
+
+                        data = ds[chan]
+                        means.append(data.mean().item())
+                        stds.append(data.std().item())
+                        mins_.append(data.min().item())
+                        maxs_.append(data.max().item())
+
+                        if chan in log_channels_set:
+                            # 仅对大于 0 的值取自然对数进行统计
+                            data_pos = data.where(data > 0)
+                            count_pos = data_pos.count().item()
+                            if count_pos > 0:
+                                lm = np.log(data_pos).mean().item()
+                                ls = np.log(data_pos).std().item()
+                            else:
+                                lm, ls = np.nan, np.nan
+                            log_means.append(lm)
+                            log_stds.append(ls)
+                        else:
+                            log_means.append(np.nan)
+                            log_stds.append(np.nan)
+                    
+                    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
+                    
+                    # 构造输出内容
+                    lines = []
+                    lines.append(f"File: {os.path.basename(file_path)}")
+                    lines.append(f"RUN time {now_str}")
+                    lines.append("Statistics for FY4B satellite channels")
+                    
+                    # 输出通道标签：channel_0 ~ channel_14 对应 C01 ~ C15
+                    channel_labels = [f"C{i:02d}" for i in range(1, 16)]
+                    lines.append(" ".join(channel_labels))
+                    
+                    lines.append(" ".join(f"{v:.6f}" for v in means))
+                    lines.append(" ".join(f"{v:.6f}" for v in stds))
+                    lines.append(" ".join(f"{v:.6f}" for v in mins_))
+                    lines.append(" ".join(f"{v:.6f}" for v in maxs_))
+                    lines.append(" ".join(f"{v:.6f}" for v in log_means))
+                    lines.append(" ".join(f"{v:.6f}" for v in log_stds))
+                    
+                    out_str = "\n".join(lines) + "\n\n"
+                    
+                    # 打印并写入文件
+                    print(out_str)
+                    out_f.write(out_str)
+                    
+                    print(f"Processed file: {file_path}")
+            except Exception as e:
+                print(f"Error processing file {file_path}: {e}")
+    print(f"Stats file saved to: {output_path}")
+
+def load_means_stds(file_path, subset_channels =None, log_transform_channels=None):
+    """
+    加载全局 FY4B 统计文件，支持通道子集和对数变换
+    
+    Args:
+        file_path (str): 统计文件路径（全局）
+        subset_channels (list): 需加载的通道索引（如 [0,1,2] 对应 C01-C03），默认为None表示选择所有通道
+        log_transform_channels (list): 需应用对数变换的通道索引（如 [2]）
+
+    Returns:
+        means, stds, mins, maxs (np.array): 处理后的统计量数组
+    """
+    # 读取文件内容
+    df_means_stds = pd.read_csv( 
+		file_path, header=0, skiprows=3, sep=' ')
+    
+    Means = df_means_stds.iloc[0].values
+    Stds = df_means_stds.iloc[1].values
+    Mins = df_means_stds.iloc[2].values
+    Maxs = df_means_stds.iloc[3].values
+    Means_log = df_means_stds.iloc[4].values
+    Stds_log = df_means_stds.iloc[5].values
+    if log_transform_channels is not None:
+        for idx in log_transform_channels:
+            Means[idx] = Means_log[idx]
+            Stds[idx] = Stds_log[idx]
+            
+    # 如果subset_channels为None，选择所有通道
+    if subset_channels is None:
+        subset_channels = list(range(len(Means)))
         
-    except Exception as e:
-        print(f"加载数据时出错: {str(e)}")
-        return None, None
+    means = Means[subset_channels]
+    stds = Stds[subset_channels]
+    mins = Mins[subset_channels]
+    maxs = Maxs[subset_channels]
+    return means, stds, mins, maxs
+    
 
-    # 加载特定目录下的所有nc文件
-    dataset, dataloader = load_data_tiles('/path/to/tiles', '*.nc')
 
-    # 使用dataloader进行迭代
-    for batch in dataloader:
-        channels = batch['channels']  # 形状: [batch_size, 15, height, width]
-        cloud_mask = batch['cloud_mask']  # 形状: [batch_size, height, width]
-        # 进行数据处理...
+def load_data_tiles(ddir, tile_names, means_stds_file):
+	"""
+	Load pytorch.Dataset object for the tiles.
+
+	:param ddir: Data directory of the tile files.
+	:param tile_names: Regex for tiles to use from the data directory.
+	:param means_stds_file: File containing means and standard deviations of the different cloud properties.
+	:returns: Dataset object from ModisGlobalTilesDataset and corresponding pytorch.DataLoader.
+	"""
+	# Cloud properties to use in input
+	param_cols = ['cloud_top_height', 'cloud_optical_thickness', 'cloud_water_path']
+	subset = [1, 3, 4]
+	# Additional parameters for the pytorch.Dataset class ModisGlobalTilesDataset
+	ext = 'nc'
+	subscale = False
+	grid_size = 256
+	log_transform = True
+	log_transform_indices = [0,1,3]
+	normalize = True
+	means, stds, mins, _ = load_means_stds(file=means_stds_file, log_transform=log_transform)
+	dataset = FY4BTilesDataset(
+		data_dir=ddir, tile_pattern=ext, channel_indices=subset, channel_names=param_cols,
+		transform=None,  grid_size=grid_size,
+		normalize=normalize, mean=means, std=stds, min=mins, log_transform=log_transform,
+        log_transform_indices=log_transform_indices)
+	batch_size = 64 if len(dataset) >= 64 else len(dataset)
+	dataloader = DataLoader(dataset, batch_size=batch_size,
+							shuffle=False, drop_last=False, num_workers=1)
+	return dataset, dataloader
+
+    
+
+# endregion

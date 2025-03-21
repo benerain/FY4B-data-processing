@@ -7,6 +7,14 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
 
+from datetime import datetime
+import os
+
+import glob
+
+
+from datetime import datetime
+
 
 def read_nc(filename):
 	"""
@@ -40,163 +48,125 @@ def subscalegrid(output_size, sample):
 	return image
 
 
-# def standardize_channel(array, mean, std, channel, epsilon, log_transform):
-# 	"""
-# 	Standardize input array along channels with mean/std.
-
-# 	:param array: Data array.
-# 	:param mean: Mean of channel.
-# 	:param std: Standard deviation of channel.
-# 	:param channel: Channel name.
-# 	:param epsilon: Minimum value of the corresponding channel.
-# 	:param log_transform: If channel is to be normalized with the log.
-# 	:returns: Standardized data array.
-# 	"""
-# 	if channel in ['cloud_top_pressure', 'cloud_top_height', 'cloud_top_temperature']:
-# 		return (array - mean) / std
-# 	elif channel in ['cloud_optical_thickness', 'cloud_water_path']:
-# 		if log_transform:
-# 			return (np.where(array == 0., np.log(epsilon - 1e-10), np.log(array)) - mean) / std
-# 		else:
-# 			return (array - mean) / std
-# 	else:
-# 		print('Unknown channel {}'.format(channel))
-# 		return None
-
-def standardize_channel(array, mean, std, channel, epsilon, log_transform):
-    """
-    Standardize input array along channels with mean/std.
-
-    :param array: Data array.
-    :param mean: Mean of channel.
-    :param std: Standard deviation of channel.
-    :param channel: Channel name (例如 'CER', 'CTH', 'CTT', 'COT', 'LWP').
-    :param epsilon: Minimum value of the corresponding channel.
-    :param log_transform: If channel is to be normalized with the log.
-    :returns: Standardized data array.
-    """
-    # 对压力、高度、温度等通道（例如 CER, CTH, CTT）使用常规归一化
-    if channel in ['CER', 'CTH', 'CTT']:
-        return (array - mean) / std
-    # 对光学厚度和云水路径（例如 COT, LWP），可选用对数归一化
-    elif channel in ['COT', 'LWP']:
-        if log_transform:
-            # 避免取对数时出现 log(0)，将0或负值处理为 epsilon（减去一个微小值以确保数值稳定）
-            return (np.where(array == 0., np.log(epsilon - 1e-10), np.log(array)) - mean) / std
-        else:
-            return (array - mean) / std
-    else:
-        print('Unknown channel {}'.format(channel))
-        return None
-
-
-class FYGlobalTilesDataset(Dataset):
+class FY4BTilesDataset(Dataset):
 	"""
 	Pytorch 数据集类，用于加载 FY 平台生成的云属性瓦片。
   
 	"""
 
-	def __init__(self, ddir, ext, tile=None, subset=None, subset_cols=None,
-	             transform=None, log_transform=False, normalize=False, mean=None, std=None,min=None,
-	             subscale=False, grid_size=None, get_ground_cbh=False):
+	def __init__(self, 
+				 data_dir, 
+				 tile_pattern, 
+	
+				 subset =None,  # 使用通道索引而非变量名
+				 subset_cols=None,    # 可选：为通道提供语义化名称
+				 transform=None, 
+				 normalize=False,
+				 means=None,
+				 stds=None,
+				 mins=None,
+				 grid_size= 256,
+				 log_transform=False,
+				#  log_transform_indices=None
+				 ):  # 指定哪些通道需要对数变换
+		
 		"""
-
-        :param ddir: 存放瓦片文件的目录。
-        :param ext: 文件扩展名（例如 "nc"）。
-        :param tile: 文件名前缀（默认为 "tile"）。
-        :param subset: 是否仅使用部分通道（例如 0,1,2,...）。
-        :param subset_cols: 使用的通道名称列表，
-        :param transform: 应用于样本数据的 pytorch 转换。
-        :param log_transform: 是否对部分通道（如 COT、CWP）进行对数变换。
-        :param normalize: 是否对通道数据进行归一化。
-        :param mean: 各通道均值（归一化时用）。
-        :param std: 各通道标准差（归一化时用）。
-        :param min: 各通道最小值（归一化时用）。
-        :param subscale: 是否对子瓦片进行尺寸缩放。
-        :param grid_size: 瓦片尺寸（如 128）。
-        :param get_ground_cbh: 是否加载额外的云底高度信息。
+		FY4B卫星数据切片的PyTorch数据集类，处理通道数据
+		
+		参数:
+			data_dir (str): 数据目录
+			tile_pattern (str): 文件匹配模式
+			channel_indices (list): 要使用的通道索引列表
+			channel_names (list, optional): 通道名称列表，便于可视化和调试
+			transform (callable, optional): 数据转换函数
+			normalize (bool): 是否标准化数据
+			means_stds_file (str, optional): 存储均值和标准差的文件路径
+			grid_size (int): 切片大小
+			log_transform (bool): 是否启用对数变换
+			log_transform_indices (list): 需要对数变换的通道索引列表
 		"""
-		# Directory with tiles files
-		self.ddir = ddir
-		# Extension to use for the files
-		self.ext = ext
-		# Filename to use
-		self.tile = 'tile' if tile is None else tile
-		# Column subset
+		self.data_dir = data_dir
+		self.tiles = glob.glob(os.path.join(data_dir, tile_pattern))
 		self.subset = subset
-		self.subset_cols = subset_cols
-		# Transforms to apply
+		self.subset_cols = subset_cols if subset_cols else [f"channel_{i}" for i in subset]
 		self.transform = transform
-		# Define parameters to transform of input data
-		self.subscale = subscale
+		self.normalize = normalize
+		self.log_transform = log_transform
+		# self.log_transform_indices = log_transform_indices if log_transform_indices else []
 		self.grid_size = grid_size
 
-		self.normalize = normalize
-		self.mean = mean
-		self.std = std
-		self.min = min
-		self.log_transform = log_transform
-		self.get_ground_cbh = get_ground_cbh
-		self.file_paths = glob.glob(os.path.join(self.ddir, self.tile + '*.' + self.ext))
-		self.file_paths.sort()
 
-		if len(self.file_paths) == 0:
-			raise FileNotFoundError("No {} files found in directory {} ...".format(self.ext, self.ddir))
+		self.means = means
+		self.stds = stds
+		self.mins = mins
+
+		
+	
 
 	def __len__(self):
-		return len(self.file_paths)
+		return len(self.tiles)
 
 	def _standardize_input(self, values):
+		"""按通道标准化输入数据"""
+		standardized = values.copy()
+		
 		for i, col in enumerate(self.subset_cols):
-			values[i, :, :] = standardize_channel(values[i, :, :], self.mean[i], self.std[i], col, self.min[i], self.log_transform)
+			values[i, :, :] = self.standardize_channel(values[i, :, :], self.means[i], self.stds[i], col, self.mins[i], self.log_transform)
 		return values
 
-	def __getitem__(self, idx):
+	def standardize_channel(self, values, mean, std, col, mins, log_transform):
+			if col in ['C03', 'C05', 'C06', 'C07', 'C08', 'C09', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15']:
+				return (values - mean) / std
+			elif col in ['C01', 'C02', 'C04']:
+				if log_transform:
+					return (np.where(values == 0., np.log(mins - 1e-10), np.log(values)) - mean) / std
+				else:
+					return (values - mean) / std
+			else:
+				print('Unknown channel {}'.format(col))
+				return None
+			
 
-		# 如果传入的索引 idx 是一个 PyTorch 张量（tensor），则将其转换为 Python 列表，以便后续用作列表索引。
+	def __getitem__(self, idx):
 		if torch.is_tensor(idx):
 			idx = idx.tolist()
-
-		# 获取文件名和 ID
-		filename = self.file_paths[idx]
-		id = os.path.basename(filename) 
-
-		data = read_nc(filename=filename)
-
-		# 设置了只提取部分通道
-		if self.subset:
-			grid_values = np.array(data[self.subset_cols].to_array().values)
-		else:
-			grid_values = np.array(data.to_array().values)
 		
-		# 从数据中提取名为 'CLM' 的变量（云掩膜数据），并转换成 NumPy 数组。
-		cld_mask = np.array(data['CLM'].values)
-		# Get center
-		center = np.array(data['center'].values)
+		# 获取文件名
+		filename = self.tiles[idx]
+		id = os.path.basename(filename)
+		
+		# 读取数据
+		with xr.open_dataset(filename) as ds:
+			# 提取所需通道数据
+			if self.subset is not None:
+				grid_values = np.array(ds[self.subset_cols].to_array().values)
+			else:
+				grid_values = np.array(ds.to_array().values)
 
-		# Get cloud base height from calipso/cloudsat retrievals
-		if self.get_ground_cbh:
-			ground_cbh = np.array(data['cloud_base_height'].values)
-			ground_cbh_center = np.array(data['cloud_base_height_center'].values)
+			cld_mask = np.array(ds['CLM'].values) 
+        
+			center = np.array(ds['center'].values)  # 格式可能为 [lat, lon]
 
-		# 如果需要对子瓦片进行尺寸缩放
-		if self.subscale:
-			grid_values = subscalegrid(self.grid_size, grid_values)
-			cld_mask = subscalegrid(self.grid_size, cld_mask)
-		# 归一化处理
-		if self.normalize:
-			grid_values = self._standardize_input(grid_values)
+			if self.normalize:
+				grid_values = self._standardize_input(grid_values)
 
-		sample = {'data': grid_values.astype(np.float64),
-		          'cld_mask': cld_mask.astype(int),
-		          'center': center.astype(np.float64),
-		          'id': id,
-		          'ground_cbh': ground_cbh.astype(np.float64) if self.get_ground_cbh else -1,
-		          'ground_cbh_center': ground_cbh_center.astype(np.float64) if self.get_ground_cbh else -1}
 
+		
+		# 创建样本字典
+		sample = {
+			'data': grid_values.astype(np.float32),
+			'cld_mask': cld_mask.astype(int),
+			'center': center.astype(np.float64),
+			'id': id,
+		}
+		
+		# 应用转换
 		if self.transform:
 			sample['data'] = self.transform(sample['data'])
-
+		
 		return sample
 
 # endregion
+
+
+

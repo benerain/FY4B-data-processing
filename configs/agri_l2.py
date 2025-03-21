@@ -93,6 +93,11 @@ class AGRI_L2_NC_Handler( NetCDF4FileHandler):
                 'area': self.get_area_def(dataset_id) 
             })
             return data
+        elif dataset_id["name"] == "CTH":
+            data = self.nc["CTH"]
+            if data.ndim >= 2:
+                data = data.rename({data.dims[-2]: "y", data.dims[-1]: "x"})
+            return data
         
 
     def get_area_def(self, dataset_id): #  很重要

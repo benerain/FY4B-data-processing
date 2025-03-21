@@ -22,7 +22,7 @@ from method.utils.pytorch_class_fy import FY4BTilesDataset
 # import torch
 # import torch.nn as nn
 from torch.utils.data import Dataset
-# from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader
 
 
 # from method.models.models import ConvAutoEncoder
@@ -740,8 +740,8 @@ def load_data_tiles(ddir, tile_names, means_stds_file):
 	:returns: Dataset object from ModisGlobalTilesDataset and corresponding pytorch.DataLoader.
 	"""
 	# Cloud properties to use in input
-	param_cols = ['cloud_top_height', 'cloud_optical_thickness', 'cloud_water_path']
-	subset = [1, 3, 4]
+	param_cols = ['C01', 'C02','C03', 'C04', 'C05', 'C06', 'C07', 'C08', 'C09', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15']
+	subset = list(range(len(param_cols)))
 	# Additional parameters for the pytorch.Dataset class ModisGlobalTilesDataset
 	ext = 'nc'
 	subscale = False
